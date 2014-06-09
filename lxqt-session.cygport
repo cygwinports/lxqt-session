@@ -1,0 +1,13 @@
+inherit qt4-cmake
+
+NAME="lxqt-session"
+VERSION=0.7.0
+RELEASE=1
+CATEGORY="X11"
+SUMMARY="LXQt session manager"
+DESCRIPTION="LXQt is the Qt port and the upcoming version of LXDE. It is the
+product of the merge between the LXDE-Qt and the Razor-qt projects: A
+lightweight, modular, blazing-fast and user-friendly desktop environment."
+HOMEPAGE="http://lxqt.org/"
+SRC_URI="http://lxqt.org/downloads/lxqt/${VERSION}/${NAME}-${VERSION}.tar.xz"
+SRC_DIR=.
