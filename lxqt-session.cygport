@@ -1,7 +1,7 @@
 inherit qt5 cmake
 
 NAME="lxqt-session"
-VERSION=0.9.0
+VERSION=0.11.0
 RELEASE=1
 CATEGORY="X11"
 SUMMARY="LXQt session manager"
@@ -10,3 +10,5 @@ product of the merge between the LXDE-Qt and the Razor-qt projects: A
 lightweight, modular, blazing-fast and user-friendly desktop environment."
 HOMEPAGE="http://lxqt.org/"
 SRC_URI="http://downloads.lxqt.org/lxqt/${VERSION}/${NAME}-${VERSION}.tar.xz"
+
+CYGCMAKE_ARGS="-DPULL_TRANSLATIONS=OFF -DWITH_LIBUDEV=OFF"
