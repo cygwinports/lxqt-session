@@ -1,0 +1,11 @@
+--- origsrc/lxqt-common-0.11.0/startlxqt.in	2016-09-23 17:44:22.000000000 -0500
++++ src/lxqt-common-0.11.0/startlxqt.in	2016-11-07 10:17:32.267164900 -0600
+@@ -88,6 +88,8 @@ export QT_PLATFORM_PLUGIN=lxqt
+ # Qt5 platform plugin
+ export QT_QPA_PLATFORMTHEME=lxqt
+ 
++export SSH_ASKPASS=/usr/bin/lxqt-openssh-askpass
++
+ # use lxqt-applications.menu for main app menu
+ export XDG_MENU_PREFIX="lxqt-"
+ 

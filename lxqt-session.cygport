@@ -1,7 +1,7 @@
 inherit qt5 cmake
 
 NAME="lxqt-session"
-VERSION=0.11.0
+VERSION=0.12.0
 RELEASE=1
 CATEGORY="X11"
 SUMMARY="LXQt session manager"
@@ -9,6 +9,28 @@ DESCRIPTION="LXQt is the Qt port and the upcoming version of LXDE. It is the
 product of the merge between the LXDE-Qt and the Razor-qt projects: A
 lightweight, modular, blazing-fast and user-friendly desktop environment."
 HOMEPAGE="http://lxqt.org/"
-SRC_URI="http://downloads.lxqt.org/lxqt/${VERSION}/${NAME}-${VERSION}.tar.xz"
+SRC_URI="http://downloads.lxqt.org/downloads/${NAME}/${VERSION}/${NAME}-${VERSION}.tar.xz"
+SRC_URI+=" lxqt.ico"
+SRC_URI+=" mimeapps.list"
+PATCH_URI="
+	0.11.0-openssh-askpass.patch
+	0.11.0-xsession-icon.patch
+"
+
+OBSOLETES="lxqt-common razorqt"
+REQUIRES="lxqt-about lxqt-config lxqt-globalkeys lxqt-notificationd lxqt-panel"
+REQUIRES+=" lxqt-qtplugin lxqt-runner lxqt-themes obconf-qt openbox pcmanfm-qt"
+REQUIRES+=" lxmenu-data oxygen-icons qpdfview qterminal qupzilla"
+REQUIRES+=" dbus-x11 run xinit juffed lximage-qt lxqt-openssh-askpass"
 
 CYGCMAKE_ARGS="-DPULL_TRANSLATIONS=OFF -DWITH_LIBUDEV=OFF"
+
+src_install() {
+	cd ${B}
+	ninja_install
+
+	newmenu ${S}/mimeapps.list lxqt-mimeapps.list
+
+	insinto /usr/share/pixmaps/xwin
+	doins ${S}/lxqt.ico
+}
